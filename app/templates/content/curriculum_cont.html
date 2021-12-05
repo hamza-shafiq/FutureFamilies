@@ -1,0 +1,68 @@
+<!-- Main top section of the content. -->
+<div class="row align-items-center wow fadeInUp" data-wow-duration="2s">
+    <div class="col-2"></div>
+    <div class="col-md-8">
+        <div class="bg-transparent mt-3 mb-n1 mt-sm-1 mb-md-n2 mt-lg-n4">
+           <h2 class="text-highlight">CURRICULUM</h2>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>
+<hr class="space">
+<div class="row flex-column-reverse flex-md-row align-items-center wow fadeInLeft" data-wow-duration="2s">
+    <div class="col-1"></div>
+    <div class="col-md-10">
+        <div class="list-content text-left ln-ht2">
+            <p class="p-3">Our curriculum was developed by a small team of researchers and research assistants at the Harvard Graduate School of Education based on existing research and the results of our student questionnaire, the Adolescent Parenting Knowledge and Attitudes Survey (APKAS). The curriculum is designed as a module for high school juniors and seniors (11th-12th grade). The content of the curriculum includes:</p>
+            <ul class="col-11 curriculum-cont a"> <!-- the 'a' refers to class ul.a in bnmcustom.css. It suppresses a leading bullet for all the major list items. See https://www.w3schools.com/css/css_list.asp. -->
+              <li class="curriculum-list"> Introduction to Child Development</li>
+                <ul class="b"> <!-- The 'b', like the 'a' above, sets the leading bullett to be a hollow circle per the same reference. Both are inherited. -->
+                  <li class="curriculum-list"> Theories of child development</li>
+                  <li class="curriculum-list"> Stages of child development</li>
+                  <li class="curriculum-list"> Applying knowledge of child development to parenting skills</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Social and Emotional Learning and Empathetic Awareness</li>
+                <ul>
+                  <li class="curriculum-list"> Frameworks of social and emotional learning (SEL)</li>
+                  <li class="curriculum-list"> SEL and school success</li>
+                  <li class="curriculum-list"> The role of empathy in parenting</li>
+                  <li class="curriculum-list"> The importance of empathy for children</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Growth Mindset</li>
+                <ul>
+                  <li class="curriculum-list"> The relationship between growth mindset and parenting</li>
+                  <li class="curriculum-list"> The importance of growth mindset for children</li>
+                  <li class="curriculum-list"> How to promote growth mindset in children</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Active Learning</li>
+                <ul>
+                  <li class="curriculum-list"> Active learning change over different stages of development</li>
+                  <li class="curriculum-list"> The role of independence vs guidance in early childhood learning</li>
+                  <li class="curriculum-list"> The relationship between activity and learning connected</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Oral Language Development, Emergent Literacy, & Emergent Numeracy</li>
+                <ul>
+                  <li class="curriculum-list"> The links between literacy skills and oral language development</li>
+                  <li class="curriculum-list"> How parents can promote oral language development, literacy development, and numeracy development</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Parenting Knowledge and Efficacy</li>
+                <ul>
+                  <li class="curriculum-list"> Effective parenting and parenting practices</li>
+                  <li class="curriculum-list"> The importance of prenatal and postnatal health</li>
+                  <li class="curriculum-list"> The importance of parental health for parenting</li>
+                </ul>
+              <li class="curriculum-list mt-4"> Parents’ Role in Early Learning</li>
+                <ul>
+                  <li class="curriculum-list"> The role of socio-cultural factors (beliefs, attitudes, cultural norms, etc.) in parenting strategies</li>
+                  <li class="curriculum-list"> The role of parents in learning and development</li>
+                  <li class="curriculum-list"> Parenting style and child development</li>
+                  <a href="{{ url_for('home.whatlearned') }}" class="btn btn-site mt-4">More Results</a>
+                  <a class="btn  btn-site btn-download mt-4 mr-4" href="{{ url_for('static', filename='downloads/PTP_Curric_Final.pdf') }}" title="Download Curriculum">
+                    <i class="fas fa-file-excel fa-md"></i> <span class="fa-md">Download Curriculum</span></a> 
+                    <!-- For word (docx) documents replace 'fa-file-excel' with 'fa-file-word' and reference a valid word document in the line above it. -->
+                </ul>
+            </ul>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>

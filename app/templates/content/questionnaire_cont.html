@@ -1,0 +1,41 @@
+<!-- Main top section of the content. -->
+<div class="row align-items-center wow fadeInUp" data-wow-duration="2s">
+    <div class="col-md-12 text-center">
+        <div class="bg-transparent mt-4 mb-n1 mt-md-2 mt-lg-n4">
+            <h2 class="text-highlight">QUESTIONNAIRE</h2>
+        </div>
+    </div>
+</div>
+<hr class="space">
+<div class="row flex-column-reverse flex-md-row align-items-center wow fadeInLeft" data-wow-duration="2s">
+    <div class="col-md-12">
+        <div class="list-content text-left">
+            <p>To understand what American high school students know and believe about parenting and child development we designed, validated, and administered a questionnaire to a sample of over one thousand American high school students. The Adolescent Parenting Knowledge and Attitudes Survey (APKAS) assesses the extent to which students hold certain beliefs associated with positive outcomes for young children, as well as their knowledge of certain milestones of child development.</p>
+        </div>
+    </div>
+</div>
+<hr class="space">
+<div class="row align-items-center wow fadeInRight" data-wow-duration="2s">
+    <div class="col-md-12 text-center">
+          <img class="mt-0" style="width:90%;" src="../../static/images/SFF_APKAS_questionnaire_a.jpg">
+    </div>
+</div>
+<hr class="space">
+<div class="row flex-column-reverse flex-md-row align-items-center wow fadeInLeft" data-wow-duration="2s">
+    <div class="col-md-12">
+        <div class="list-content text-left">
+            <p>A small number of studies using surveys have been conducted to understand the attitudes of specific adolescent groups—such as teens considered at high risk of teen pregnancy (e.g. Larsen & Juhasz, 1985; Meyer, Jain, & Canfield-Davis, 2011)—but to our knowledge this is the first-ever survey on the topic to be administered to a large and geographically, racially, and socioeconomically diverse sample of adolescents. To obtain a copy of the APKAS please email us.</p>
+            <a href="{{ url_for('home.curriculum') }}" class="btn btn-site mt-2">More Results</a>
+
+            <div class="col-md-12 text-right pt-2">    
+                {% set emailto = "sendinfo@strongfam.org" %}
+                {% set subject = "Action message initiated by SFF website visitor" %} 
+                {% set message = "Please send me a copy of the APKAS questionnaire." %}
+                {% set mailto = emailto + "?subject=" + (subject | urlencode + "&body=" + message | urlencode) %}
+                <a class="btn btn-site btn-email mr-3" href="mailto:{{ mailto }}">
+                    <i class="fas fa-envelope fa-md"></i> <span class="ml-2 fa-md">Email for the APKAS questionnaire</span></a>   
+            </div>
+
+        </div>
+    </div>
+</div>

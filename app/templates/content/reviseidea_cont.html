@@ -1,0 +1,23 @@
+<h1 align="center">Ideas</h1>
+<h3 align="center">Revise an idea or view a final idea.</h3>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Ideas</th>
+      <th scope="col">Final Ideas</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for idea in data %}
+      <tr>
+        <td><a href="/ideas/{{idea[0]}}">Idea {{idea[0]}}</a></td>
+      {% if idea[1] %}
+        <td><a href="/ideas/{{idea[0]}}">Idea Final {{idea[1]}}</a></td>
+      {% else %}
+        <td></td>
+      {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
