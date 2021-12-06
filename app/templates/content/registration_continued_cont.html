@@ -7,123 +7,143 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <style>
     #container{width:100%;}
-    #center{
-        margin: auto;
-        width: 50%;
-        padding: 10px;
+    .main-page h1,
+    .main-page h2,
+    .main-page h4,
+    .main-page h5 {
+        font-size: 12px;
+        margin-bottom: 0;
+        font-family: Arial;
     }
-    .col-custom {
-    border-bottom: 1px solid grey;
-    width:100%
-}
+    .font-10 {
+        font-size: 10px;
+    }
+    .font-12 {
+        font-size: 12px;
+    }
+    .main-page small,
+    .main-page label,
+    .main-page p {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .main-page .form-group {
+        margin-bottom: 5px;
+    }
+    .main-page .form-group label {
+        margin: 0;
+        white-space: nowrap;
+    }
+    .main-page {
+        margin: 0 auto;
+        max-width: 700px;
+        font-family: Arial;
+    }
+    .main-page hr {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    .main-page .form-control {
+        height: 25px;
+        font-size: 10px;
+    }
+    .main-page form .required label:after {
+        margin-left: 2px;
+    }
+    .main-page .btn {
+        height: 25px;
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+    .alert {
+        font-size: 12px;
+    }
+    .alert ul {
+        padding: 0;
+        list-style: none;
+    }
+    .red-text {
+        color: red;
+    }
 </style>
-<h2 align="center">User Registration Continued</h2>
-<hr />
-<p align="center">Please fill out the information below to complete your registration.</p>
-<br/>
-<br />
-<div id="container">
-  <div id="center">
-      <h1 class='col-custom'>Registration Part II</h1>
-      <form method="POST" action="{{url_for('home.registration_continued')}}" width="100%" name="register_cont", id="register_cont">
-         {{ form.hidden_tag() }}
-          {{ wtf.form_errors(form) }}
-          <div class="form-row">
-                <div class="form-group col-xl-20 required" style="width: 100%">
-                  {{ form.org.label }}
-                  {{ form.org(class="form-control restrictedText", size="50", placeholder=form.org.label.text, title=form.org.label.text)  }}
-                  <div class="invalid-feedback"></div>
-                </div>
-              </div>
-          <div class="form-row">
-                <div class="form-group col-xl-20 required" style="width: 100%">
-                  {{ form.school.label }}
-                  {{ form.school(class="form-control restrictedText", size="50", placeholder=form.school.label.text, title=form.school.label.text)  }}
-                  <div class="invalid-feedback"></div>
-                </div>
-              </div>
-          <div class="form-row">
-                <div class="form-group col-xl-20 required" style="width: 100%">
-                  {{ form.position.label }}
-                  {{ form.position(class="form-control restrictedText", size="50", placeholder=form.position.label.text, title=form.position.label.text)  }}
-                  <div class="invalid-feedback"></div>
-                </div>
+    <div class="main-page">
+        <h2><strong>User Registration Continued</strong></h2>
+        <hr/>
+        <p>Please fill out the information below to complete your registration.</p>
+        <div id="container">
+          <div id="center">
+              <h1 class='col-custom'><strong>Registration Part II</strong></h1>
+              <hr/>
+              <form method="POST" action="{{url_for('home.registration_continued')}}" width="100%" name="register_cont", id="register_cont">
+                 {{ form.hidden_tag() }}
+                  {{ wtf.form_errors(form) }}
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="row form-group required">
+                              <div class="col-md-4">
+                                  {{ form.org.label }}
+                              </div>
+                              <div class="col-md-8">
+                                  {{ form.org(class="form-control restrictedText", size="50", placeholder=form.org.label.text, title=form.org.label.text) }}
+                              </div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">
+                                  {{ form.school.label }}
+                              </div>
+                              <div class="col-md-8">
+                                  {{ form.school(class="form-control restrictedText", size="50", placeholder=form.school.label.text, title=form.school.label.text) }}
+                              </div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.position.label }}</div>
+                              <div class="col-md-8">{{ form.position(class="form-control restrictedText", size="50", placeholder=form.position.label.text, title=form.position.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.adder1.label }}</div>
+                              <div class="col-md-8">{{ form.adder1(class="form-control restrictedText", placeholder=form.adder1.label.text, title=form.adder1.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group">
+                              <div class="col-md-4">{{ form.adder2.label }}</div>
+                              <div class="col-md-8">{{ form.adder2(class="form-control restrictedText", placeholder=form.adder2.label.text, title=form.adder2.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.city.label }}</div>
+                              <div class="col-md-8">{{ form.city(class="form-control restrictedText", placeholder=form.city.label.text, title=form.city.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.state.label }}</div>
+                              <div class="col-md-8">{{ form.state(class="form-control restrictedText", placeholder=form.state.label.text, title=form.state.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.zipcode.label }}</div>
+                              <div class="col-md-8">{{ form.zipcode(class="form-control restrictedText", placeholder=form.zipcode.label.text, title=form.zipcode.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.tele.label }}</div>
+                              <div class="col-md-8">{{ form.tele(class="form-control restrictedText", placeholder=form.tele.label.text, title=form.tele.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="text-right">
+                      {{ form.submit(class="btn btn-secondary")  }}
+                  </div>
+              </form>
           </div>
-          <div class="form-row">
-            <div class="form-group col-xl-20 required" style="width: 100%">
-                  {{ form.adder1.label }}
-                  {{ form.adder1(class="form-control restrictedText", placeholder=form.adder1.label.text, title=form.adder1.label.text)  }}
-                  <div class="invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="form-row">
-              <div class="form-group col-xl-20" style="width: 100%">
-                  {{ form.adder2.label }}
-                  {{ form.adder2(class="form-control restrictedText", placeholder=form.adder2.label.text, title=form.adder2.label.text)  }}
-                  <div class="invalid-feedback"></div>
-            </div>
-          </div>
-          <div class="form-row">
-              <div class="form-group col-xl-20 required">
-                  {{ form.city.label }}
-                  {{ form.city(class="form-control restrictedText", placeholder=form.city.label.text, title=form.city.label.text)  }}
-                  <div class="invalid-feedback"></div>
-              </div>
-              <div class="form-group col-xs-1 required" style="width: 25%;">
-                  {{ form.state.label }}
-                  {{ form.state(class="form-control restrictedText", placeholder=form.state.label.text, title=form.state.label.text)  }}
-                  <div class="invalid-feedback"></div>
-              </div>
-               <div class="form-group col-xs-1 required" style="width: 25%;">
-                  {{ form.zipcode.label }}
-                  {{ form.zipcode(class="form-control restrictedText", placeholder=form.zipcode.label.text, title=form.zipcode.label.text)  }}
-                  <div class="invalid-feedback"></div>
-                </div>
-          </div>
-          <div class="form-row">
-                <div class="form-group col-md-20 required">
-                  {{ form.tele.label }}
-                  {{ form.tele(class="form-control restrictedText", placeholder=form.tele.label.text, title=form.tele.label.text)  }}
-                  <div class="invalid-feedback"></div>
-                </div>
+        </div>
+    </div>
 
-          </div>
-           {{ form.submit(class="btn btn-success")  }}
-      </form>
-  </div>
-</div>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
