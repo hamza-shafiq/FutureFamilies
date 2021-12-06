@@ -54,14 +54,20 @@ Login
                 <div class="form-row">
                     <div class="form-group col-xl-20 row required" style="width: 100%">
                         <div class="col-3">{{ login_user_form.email.label }}</div>
-                        <div class="col-9">{{ login_user_form.email(class="form-control restrictedText", size="50", placeholder=login_user_form.email.label.text, title=login_user_form.email.label.text)  }}</div>
+                        <div class="col-9">
+                            {{ login_user_form.email(class="form-control restrictedText", size="50", placeholder=login_user_form.email.label.text, title=login_user_form.email.label.text)  }}
+                            <small id="error-msg-lg-em" style="color: red"></small>
+                        </div>
                         <div class="invalid-feedback"></div>
                     </div>
                   </div>
                 <div class="form-row">
                     <div class="form-group col-xl-20 row required" style="width: 100%">
                         <div class="col-3">{{ login_user_form.password.label }}</div>
-                        <div class="col-9">{{ login_user_form.password(class="form-control restrictedText", size="50", placeholder=login_user_form.password.label.text, title=login_user_form.password.label.text)  }}</div>
+                        <div class="col-9">
+                            {{ login_user_form.password(class="form-control restrictedText", size="50", placeholder=login_user_form.password.label.text, title=login_user_form.password.label.text)  }}
+                            <small id="error-msg-lg-ps" style="color: red"></small>
+                        </div>
                         <div class="invalid-feedback"></div>
                     </div>
                   </div>
@@ -70,6 +76,22 @@ Login
                 </div>
                 <div style="margin-left: 25%"><label style="color: darkred">Forget Password? </label><a style="color: blue" href="{{url_for_security('forgot_password')}}">  <u>Click Here</u></a></div>
             </form>
+
+            {% for error in login_user_form.email.errors %}
+                <script>
+                    let elem = document.querySelector("#email")
+                    elem.style.border = "1px solid red";
+                    document.getElementById("error-msg-lg-em").innerHTML = "{{error}}";
+                </script>
+            {% endfor %}
+            {% for error in login_user_form.password.errors %}
+                <script>
+                    let elem = document.querySelector("#password")
+                    elem.style.border = "1px solid red";
+                    document.getElementById("error-msg-lg-ps").innerHTML = "{{error}}";
+                </script>
+            {% endfor %}
+
             <h5><b>Subscribe to our newsletter</b></h5>
             <hr>
             <p><a href="#"><u>CLick here</u></a> to subscribe our newsletter for regular updates on Foundation funding & activities</p>
@@ -80,7 +102,6 @@ Login
             <hr>
             <form method="POST" action="{{url_for_security('register')}}" width="100%" id="registerForm"  name="register_user">
                 {{ register_user_form.hidden_tag() }}
-<!--                {{ wtf.form_errors(register_user_form) }}-->
 
                 <div class="form-row">
                     <div class="form-group col-xl-20 row required" style="width: 100%">
@@ -191,13 +212,13 @@ Login
                     document.getElementById("error-msg-psc").innerHTML = "{{error}}";
                 </script>
             {% endfor %}
-<!--            {% for error in register_user_form.recaptcha.errors %}-->
-<!--                <script>-->
-<!--                    // let elem5 = document.querySelector("#recaptcha-block")-->
-<!--                    // elem5.style.border = "1px solid red";-->
-<!--                    document.getElementById("error-msg-rcp").innerHTML = "{{error}}";-->
-<!--                </script>-->
-<!--            {% endfor %}-->
+            {% for error in register_user_form.recaptcha.errors %}
+                <script>
+                    // let elem5 = document.querySelector("#recaptcha-block")
+                    // elem5.style.border = "1px solid red";
+                    document.getElementById("error-msg-rcp").innerHTML = "{{error}}";
+                </script>
+            {% endfor %}
         </div>
     </div>
 </div>
