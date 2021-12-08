@@ -146,16 +146,20 @@ class CompleteRegistrationForm(FlaskForm):
     class Meta:
         csrf_time_limit = 604800
 
-    org = StringField('Organization Name', validators=[validators.DataRequired(), validators.Length(3, 40)],
-                       render_kw={"maxlength": "40"})
-    school = StringField('School Name', validators=[validators.optional(), validators.Length(3, 35)],
-                       render_kw={"maxlength": "35"})
-    position = StringField('Position ', validators=[validators.DataRequired(), validators.Length(3, 35)],
-                       render_kw={"maxlength": "35"})
-    tele = StringField('telephone', validators=[validators.DataRequired()])
-    adder1 = StringField("Address", validators=[validators.DataRequired()], render_kw={"maxlength": "30"})
-    adder2 = StringField("Address 2", validators=[validators.optional()], render_kw={"maxlength": "30"})
-    city = StringField("City", validators=[validators.DataRequired()], render_kw={"maxlength": "20"})
-    zipcode = StringField("Zipcode", validators=[validators.DataRequired()], render_kw={"maxlength": "5"})
-    state = SelectField("State", choices=STATES, validators=[validators.DataRequired()])
+    # org = StringField('Organization Name', validators=[validators.DataRequired(), validators.Length(3, 40)],
+    #                    render_kw={"maxlength": "40"})
+    # school = StringField('School Name', validators=[validators.optional(), validators.Length(3, 35)],
+    #                    render_kw={"maxlength": "35"})
+    # position = StringField('Position ', validators=[validators.DataRequired(), validators.Length(3, 35)],
+    #                    render_kw={"maxlength": "35"})
+    # tele = StringField('telephone', validators=[validators.DataRequired()])
+    # adder1 = StringField("Address", validators=[validators.DataRequired()], render_kw={"maxlength": "30"})
+    # adder2 = StringField("Address 2", validators=[validators.optional()], render_kw={"maxlength": "30"})
+    # city = StringField("City", validators=[validators.DataRequired()], render_kw={"maxlength": "20"})
+    # zipcode = StringField("Zipcode", validators=[validators.DataRequired()], render_kw={"maxlength": "5"})
+    # state = SelectField("State", choices=STATES, validators=[validators.DataRequired()])
+    # submit = SubmitField('Submit')
+
+    password = PasswordField("Password", validators=[validators.DataRequired()])
+    confirm_password = PasswordField("Confirm Password", validators=[validators.DataRequired()])
     submit = SubmitField('Submit')

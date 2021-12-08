@@ -79,66 +79,72 @@
                   {{ wtf.form_errors(form) }}
                   <div class="row">
                       <div class="col-md-6">
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">#}
+{#                                  {{ form.org.label }}#}
+{#                              </div>#}
+{#                              <div class="col-md-8">#}
+{#                                  {{ form.org(class="form-control restrictedText", size="50", placeholder=form.org.label.text, title=form.org.label.text) }}#}
+{#                              </div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">#}
+{#                                  {{ form.school.label }}#}
+{#                              </div>#}
+{#                              <div class="col-md-8">#}
+{#                                  {{ form.school(class="form-control restrictedText", size="50", placeholder=form.school.label.text, title=form.school.label.text) }}#}
+{#                              </div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
                           <div class="row form-group required">
-                              <div class="col-md-4">
-                                  {{ form.org.label }}
-                              </div>
+                              <div class="col-md-4">{{ form.password.label }}</div>
+                              <div class="col-md-8">{{ form.password(class="form-control restrictedText", size="50", placeholder=form.password.label.text, title=form.password.label.text) }}</div>
+                              <div class="invalid-feedback"></div>
+                          </div>
+                          <div class="row form-group required">
+                              <div class="col-md-4">{{ form.confirm_password.label }}</div>
                               <div class="col-md-8">
-                                  {{ form.org(class="form-control restrictedText", size="50", placeholder=form.org.label.text, title=form.org.label.text) }}
+                                  {{ form.confirm_password(class="form-control restrictedText", placeholder=form.confirm_password.label.text, title=form.confirm_password.label.text) }}
+                                  {% if error %}
+                                      <p class="m-0 mt-1" style="color: red">{{ error }}</p>
+                                  {% endif %}
+                                   <div class="text-right">
+                                      {{ form.submit(class="btn btn-secondary float-left mt-2") }}
+                                  </div>
                               </div>
                               <div class="invalid-feedback"></div>
                           </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">
-                                  {{ form.school.label }}
-                              </div>
-                              <div class="col-md-8">
-                                  {{ form.school(class="form-control restrictedText", size="50", placeholder=form.school.label.text, title=form.school.label.text) }}
-                              </div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.position.label }}</div>
-                              <div class="col-md-8">{{ form.position(class="form-control restrictedText", size="50", placeholder=form.position.label.text, title=form.position.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.adder1.label }}</div>
-                              <div class="col-md-8">{{ form.adder1(class="form-control restrictedText", placeholder=form.adder1.label.text, title=form.adder1.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group">
-                              <div class="col-md-4">{{ form.adder2.label }}</div>
-                              <div class="col-md-8">{{ form.adder2(class="form-control restrictedText", placeholder=form.adder2.label.text, title=form.adder2.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
+{#                          <div class="row form-group">#}
+{#                              <div class="col-md-4">{{ form.adder2.label }}</div>#}
+{#                              <div class="col-md-8">{{ form.adder2(class="form-control restrictedText", placeholder=form.adder2.label.text, title=form.adder2.label.text) }}</div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
                       </div>
-                      <div class="col-md-6">
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.city.label }}</div>
-                              <div class="col-md-8">{{ form.city(class="form-control restrictedText", placeholder=form.city.label.text, title=form.city.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.state.label }}</div>
-                              <div class="col-md-8">{{ form.state(class="form-control restrictedText", placeholder=form.state.label.text, title=form.state.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.zipcode.label }}</div>
-                              <div class="col-md-8">{{ form.zipcode(class="form-control restrictedText", placeholder=form.zipcode.label.text, title=form.zipcode.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                          <div class="row form-group required">
-                              <div class="col-md-4">{{ form.tele.label }}</div>
-                              <div class="col-md-8">{{ form.tele(class="form-control restrictedText", placeholder=form.tele.label.text, title=form.tele.label.text) }}</div>
-                              <div class="invalid-feedback"></div>
-                          </div>
-                      </div>
+{#                      <div class="col-md-6">#}
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">{{ form.city.label }}</div>#}
+{#                              <div class="col-md-8">{{ form.city(class="form-control restrictedText", placeholder=form.city.label.text, title=form.city.label.text) }}</div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">{{ form.state.label }}</div>#}
+{#                              <div class="col-md-8">{{ form.state(class="form-control restrictedText", placeholder=form.state.label.text, title=form.state.label.text) }}</div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">{{ form.zipcode.label }}</div>#}
+{#                              <div class="col-md-8">{{ form.zipcode(class="form-control restrictedText", placeholder=form.zipcode.label.text, title=form.zipcode.label.text) }}</div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
+{#                          <div class="row form-group required">#}
+{#                              <div class="col-md-4">{{ form.tele.label }}</div>#}
+{#                              <div class="col-md-8">{{ form.tele(class="form-control restrictedText", placeholder=form.tele.label.text, title=form.tele.label.text) }}</div>#}
+{#                              <div class="invalid-feedback"></div>#}
+{#                          </div>#}
+{#                      </div>#}
                   </div>
-                  <div class="text-right">
-                      {{ form.submit(class="btn btn-secondary")  }}
-                  </div>
+
               </form>
           </div>
         </div>

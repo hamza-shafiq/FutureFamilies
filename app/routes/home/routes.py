@@ -12,7 +12,13 @@ from app.extensions import db, mysql, mail
 from . import bp
 from itertools import zip_longest
 
-from app.forms import sendDocumentForm, ShareMyIdeaForm, MessageForm, CompleteRegistrationForm
+from flask_login import current_user
+from flask_security.utils import hash_password
+from flask_security.changeable import change_user_password
+
+from app.forms import sendDocumentForm, ShareMyIdeaForm, MessageForm, CompleteRegistrationForm, RegisterOverrideForm
+
+from flask_security.registerable import register_user
 
 
 conn = mysql.connect()
@@ -42,23 +48,39 @@ def registration_continued():
     if current_user.reg_complete:
         return redirect(url_for('home.home'))
     form = CompleteRegistrationForm()
+    if form.password.data != form.confirm_password.data:
+        return render_template("/registration_continued.html", form=form, error="Password Mismatch")
+
     if request.method == 'POST' and form.validate():
-        statement1 = f"""INSERT into userfirst (emailaddress) VALUES('{current_user.email}')"""
-        statement2 = f"""
-        INSERT INTO usercpt (emailaddress, orgname, schoolname, position, tele, addr1, addr2, city, state, zip)
-        VALUES ('{current_user.email}', '{form.org.data}', '{form.school.data}', '{form.position.data}', 
-                {form.tele.data}, '{form.adder1.data}', '{form.adder2.data}', '{form.city.data}', 
-                '{form.state.data}', '{form.zipcode.data}')
-                     """
-        statement3 = f"""UPDATE user SET reg_complete = 1 WHERE emailaddress = '{current_user.email}'"""
-        crsr.execute(statement1)
-        crsr.execute(statement2)
+        # change_user_pas/sword(current_user._get_current_object(), form.password.data)
+        # statement1 = f"""INSERT into userfirst (emailaddress) VALUES('{current_user.email}')"""
+        # statement2 = f"""
+        # INSERT INTO usercpt (emailaddress, orgname, schoolname, position, tele, addr1, addr2, city, state, zip)
+        # VALUES ('{current_user.email}', '{form.org.data}', '{form.school.data}', '{form.position.data}',
+        #         {form.tele.data}, '{form.adder1.data}', '{form.adder2.data}', '{form.city.data}',
+        #         '{form.state.data}', '{form.zipcode.data}')
+        #              """
+        statement3 = f"""UPDATE user SET reg_complete = 1, password = '{hash_password(form.password.data)}' WHERE emailaddress = '{current_user.email}'"""
+        # crsr.execute(statement1)
+        # crsr.execute(statement2)
         crsr.execute(statement3)
         conn.commit()
         return redirect(url_for('home.home'))
     else:
         print(form.errors)
     return render_template("/registration_continued.html", form=form)
+
+
+@bp.route("/custom-register/", methods=["POST"])
+def custom_register():
+    form = RegisterOverrideForm(request.form)
+    form.password.data = "12341234"
+    form.password_confirm.data = "12341234"
+    if request.method == 'POST' and form.validate_on_submit():
+        register_user(form)
+
+    return render_template('/security/login_user.html', register_user_form=form)
+
 
 @bp.route("/")
 def home():

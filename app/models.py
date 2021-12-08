@@ -13,8 +13,8 @@ roles_users = db.Table(
 
 
 class User(db.Model, UserMixin):
-    # id = db.Column(db.INT(), primary_key=True)
-    email = db.Column('emailaddress', db.VARCHAR(50), primary_key=True)
+    id = db.Column(db.INT(), primary_key=True)
+    email = db.Column('emailaddress', db.VARCHAR(50))
     password = db.Column(db.VARCHAR(22))
     active = db.Column(db.BOOLEAN, default=True)
     reg_complete = db.Column(db.BOOLEAN, default=False)
